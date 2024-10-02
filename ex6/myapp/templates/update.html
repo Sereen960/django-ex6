@@ -1,0 +1,82 @@
+<!-- update.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Update Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kamaraj College of Engineering and Technology</h1>
+        <h2>Web Applications using Django Framework</h2>
+        <h3>Sereen Fathima Gani(22uit103)</h3>
+        <h4>Update Record</h4>
+
+        <form method="POST" action="{% url 'updatetab' instance.id %}">
+            {% csrf_token %}
+            <input type="text" name="name" value="{{ instance.name }}" required>
+            <input type="number" name="price" value="{{ instance.price }}" required>
+            <input type="number" name="quantity" value="{{ instance.quantity }}" required>
+            <textarea name="description">{{ instance.description }}</textarea>
+            <button type="submit">Update Record</button>
+        </form>
+        <a href="{% url 'readtab' %}">Cancel</a>
+    </div>
+</body>
+</html>

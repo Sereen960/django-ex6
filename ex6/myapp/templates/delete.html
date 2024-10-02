@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            text-align: center;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><center>
+        <h1>Kamaraj College of Engineering and Technology</h1>
+        <h2>Web Applications using Django Framework</h2>
+        <h3>Sereen Fathima Gani(22uit103)</h3>
+        <h4>Delete Record</h4>
+        </center>
+
+        <p>Are you sure you want to delete the record for {{ record.name }}?</p>
+        
+        <form method="POST" action="{% url 'deletetab' record.id %}">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+        </form>
+        <a href="{% url 'readtab' %}">Cancel</a>
+    </div>
+</body>
+</html>
